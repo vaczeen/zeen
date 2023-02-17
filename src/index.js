@@ -2,25 +2,21 @@ const express = require('express')
 const dotenv = require('dotenv')
 const mongoose  = require('mongoose')
 const bodyParser = require('body-parser')
-const userRoute = require('./routes/user')
+const userRoutes = require('./routes/user')
 const app = express()
 
 dotenv.config()
 
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
+app.use(express.json());
+app.use("/test",userRoutes)
 
-app.use('/',userRoute)
-
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 1111 ;
 const DB_USERNAME = process.env.DB_USERNAME || "root"
 const DB_PASSWORD = process.env.DB_PASSWORD || "password"
 const DB_HOST = process.env.HOST || "localhost"
 const DB_NAME = process.env.DB_NAME || "mydatabase"
-
-app.get('/', (req, res) => {
-    res.send('It\'s work fine.')
-})
 
 app.listen(PORT, () => console.log(`server running on port ${PORT}`))
 

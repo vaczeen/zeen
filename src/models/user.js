@@ -12,6 +12,10 @@ const UserSchema = Schema({
         type: String,
         require: true
     },
+    _id:{
+        type:String,
+        require:true
+    },
     firstName: String,
     lastName: String
 }, {
