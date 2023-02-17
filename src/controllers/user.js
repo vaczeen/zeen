@@ -1,12 +1,12 @@
 const User = require('../models/user')
+const express = require('express')
 
-const create = (req, res) => {
+
+
+const create = async (req, res) => {
     try {
-        User.create({ ...req.body })
-            .then((err, result) => {
-                if (err) res.send(err)
-                else res.status(201).json(result)
-            })
+        const users = await User.create(req.body)
+        res.status(201).send(users)
     } catch (error) {
         res.status(400).json({ message: 'Error while create user.', detail: error })
     }
@@ -14,47 +14,38 @@ const create = (req, res) => {
 }
 
 
-const Read = (req, res) => {
+const retrieve = async (req, res) => {
     try {
-        User.Read({ ...req.body })
-            .then((err, result) => {
-                if (err) res.send(err)
-                else res.status(201).json(result)
-            })
+       const users = await User.findById(req.params.id)
+       res.status(200).send(users)
     } catch (error) {
-        res.status(400).json({ message: 'Error while create user.', detail: error })
+        res.status(400).json({ message: 'Error while retrieve user.', detail: error })
     }
 
 }
 
-const Update = (req, res) => {
+const update = async (req, res) => {
     try {
-        User.Update({ ...req.body })
-            .then((err, result) => {
-                if (err) res.send(err)
-                else res.status(201).json(result)
-            })
+       const users = await User.findByIdAndUpdate({...req.params.id , ...req.body})
+       res.status(200).send(users)
     } catch (error) {
-        res.status(400).json({ message: 'Error while create user.', detail: error })
+        res.status(400).json({ message: 'Error while update user.', detail: error })
     }
 
 }
 
-const Delete = (req, res) => {
+const destroy = async (req, res) => {
     try {
-        User.Delete({ ...req.body })
-            .then((err, result) => {
-                if (err) res.send(err)
-                else res.status(201).json(result)
-            })
+       const users = await User.findByIdAndDelete(req.params.id)
+       res.status(200).send(users)
     } catch (error) {
-        res.status(400).json({ message: 'Error while create user.', detail: error })
+        res.status(400).json({ message: 'Error while delete user.', detail: error })
     }
 
 }
-module.export = {
+module.exports = {
     create,
-    Read,
-    Update,
-    Delete
+    retrieve,
+    update,
+    destroy
 }
