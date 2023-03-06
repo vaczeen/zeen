@@ -9,7 +9,7 @@ dotenv.config()
 
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
-app.use("/test",userRoutes)
+app.use("/user",userRoutes)
 
 const PORT = process.env.PORT || 1111 ;
 const DB_USERNAME = process.env.DB_USERNAME || "root"
