@@ -15,15 +15,15 @@ const OrderSchema = new Schema({
         ref: 'Product',
         reqiure: true
     },
-    paymentDetail:{
-        id:Number,
-        amount:Number,
-        provider:String,
-        status:String
+    paymentDetail: {
+        id: Number,
+        amount: Number,
+        provider: String,
+        status: String
     },
-    quantity:Number,
-},{
-    timestamps:true
+    quantity: Number,
+}, {
+    timestamps: true
 })
 
 module.exports = mongoose.model('Order', OrderSchema)
