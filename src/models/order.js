@@ -3,25 +3,40 @@ const Schema = mongoose.Schema
 
 const OrderSchema = new Schema({
     orderDetail: {
-        id: Number
-    },
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-        require: true
-    },
-    product: {
-        type: Schema.Types.ObjectId,
-        ref: 'Product',
-        reqiure: true
+        user: {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+            require: true
+        },
+        paymentId:{
+            type:Schema.Types.ObjectId,
+            ref:'paymentDetail',
+            require:true
+        }
     },
     paymentDetail: {
-        id: Number,
+        orderId: {
+            type: Schema.Types.ObjectId,
+            ref: 'orderDetail',
+            require: true
+        },
         amount: Number,
         provider: String,
         status: String
     },
-    quantity: Number,
+    orderItem: {
+        orderId: {
+            type: Schema.Types.ObjectId,
+            ref: 'orderDetail',
+            require: true
+        },
+        product: {
+            type: Schema.Types.ObjectId,
+            ref: 'Product',
+            reqiure: true
+        },
+        quantity: Number,
+    }
 }, {
     timestamps: true
 })

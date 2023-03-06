@@ -4,7 +4,6 @@ const Schema = mongoose.Schema
 
 const CartSchema = new Schema({
     cart: {
-        id: Number,
         quantity: Number
     },
     product: {

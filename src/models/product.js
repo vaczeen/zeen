@@ -7,13 +7,12 @@ const ProductSchema = new Schema({
         name: String,
         description: String,
         price: Number,
-        quantity: Number,
-        category: {
-            id: Number,
+        quantity: Number
+    },
+    category: {
             cg_name: String,
             description: String
         }
-    }
 }, {
     timestamps: true
 })

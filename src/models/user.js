@@ -16,6 +16,11 @@ const UserSchema = Schema({
         require: true
     },
     address: {
+        user:{
+            type:Schema.Types.ObjectId,
+            ref:'email',
+            require:true
+        },
         address1: String,
         address2: String,
         city: String,
@@ -23,11 +28,21 @@ const UserSchema = Schema({
         country: String
     },
     payment: {
+        user:{
+            type:Schema.Types.ObjectId,
+            ref:'email',
+            require:true
+        },
         paymentType: String,
         provider: String,
         cardNumber: Number,
         cardHolder: String,
         expire: Date
+    },
+    roleId:{
+        type:Schema.Types.ObjectId,
+        ref:'Role',
+        require:true,
     },
     firstName: String,
     lastName: String,
