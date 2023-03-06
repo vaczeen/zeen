@@ -2,13 +2,13 @@ const User = require('../models/user')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
-let validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+// let validEmail = /^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9-]+(?:\.[a-z0-9-]+)*$/
 let validPassword = /^(?=.*[0-9a-zA-Z])(?=.*[*.!@#$-=_])(?=.*[0-9a-zA-Z]).{8,16}$/
 const register = async (req, res) => {
     try {
         const { email, password } = req.body
         //check match username and password
-        if (!email.match(validEmail)) return res.status(400).json({ "detail": "Invalid email." });
+        // if (!email.match(validEmail)) return res.status(400).json({ "detail": "Invalid email." });
         if (!password.match(validPassword)) return res.status(400).json({ "detail": "Invalid password." });
 
         if (!(email && password)) {
