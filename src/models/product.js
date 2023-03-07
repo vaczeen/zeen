@@ -3,15 +3,15 @@ const Schema = mongoose.Schema
 
 const ProductSchema = new Schema({
     product: {
-        id: Number,
         name: String,
         description: String,
         price: Number,
         quantity: Number
     },
     category: {
-            cg_name: String,
-            description: String
+        type:Schema.Types.ObjectId,
+        ref:'pCategory',
+        require:true
         }
 }, {
     timestamps: true
