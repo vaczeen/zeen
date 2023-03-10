@@ -4,24 +4,24 @@ const Schema = mongoose.Schema
 const ProductSchema = new Schema({
     productName: {
         type: String,
-        require: true
+        required: true
     },
     descripttion:{
         type:String,
-        require:true
+        required:true
     },
     category: {
         type: Schema.Types.ObjectId,
         ref: 'pCategory',
-        require: true
+        required: true
     },
     price: {
         type: Number,
-        require: true
+        required: true
     },
     quantity:{
         type:Number,
-        require:true
+        required:true
     }
 }, {
     timestamps: true

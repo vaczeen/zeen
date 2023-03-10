@@ -4,12 +4,16 @@ const Schema = mongoose.Schema
 const RoleSchema = new Schema({
     roleName: {
         roleName: String,
-        require:true
+        required:true
     },
     permissions: {
         type: String,
-        require: true
+        required: true
     },
+    user:{
+        type:Schema.Types.ObjectId,
+        ref:'User'
+    }
 })
 
 module.exports = mongoose.model('Role', RoleSchema)

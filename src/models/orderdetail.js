@@ -5,12 +5,12 @@ const OrderDetailSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        require: true
+        required: true
     },
     paymentId: {
         type: Schema.Types.ObjectId,
         ref: 'PaymentDetail',
-        require: true
+        required: true
     }
 }, {
     timestamps: true

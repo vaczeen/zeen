@@ -16,8 +16,8 @@ const register = async (req, res) => {
         }
         //check if user already exist
         //Validate if user exist in our database 
-        const oldUser = await User.findOne({ email: email })
-        if (oldUser) {
+        const oldUser = await User.find({ email: email })
+        if (oldUser.length > 0) {
             return res.status(400).json({ "detail": "User Already Exist. Please Login" })
         }
         //Encrypt user password
@@ -31,7 +31,9 @@ const register = async (req, res) => {
                 ...data,
                 password: encryptPassword
             }, (err, result) => {
-                if (err) res.status(400).send(err)
+                if (err){
+                   res.status(400).send(err) 
+                } 
                 else {
                     res.status(201).send(result)
                 }
@@ -50,7 +52,7 @@ const login = async (req, res) => {
         const { email, password } = req.body
         if (!email.match(validEmail)) return res.status(400).json({ "detail": "Invalid email." });
         if (!password.match(validPassword)) return res.status(400).json({ "detail": "Invalid password." });
-        
+
         if (!(email, password)) {
             return res.status(400).json({ "detail": "All input is required" })
         }
@@ -71,6 +73,7 @@ const login = async (req, res) => {
             loginUser = {
                 id: loginUser._id,
                 email: loginUser.email,
+                isActive:loginUser.isActive,
                 token: token
             }
             return res.status(201).json(loginUser)

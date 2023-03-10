@@ -5,7 +5,7 @@ const PaymentDetailSchema = new Schema({
        orderId:{
         type:Schema.Types.ObjectId,
         ref:'OrderDetail',
-        require:true
+        required:true
        },
        amount:Number,
        provider:String,

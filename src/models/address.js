@@ -5,7 +5,7 @@ const AddressSchema = new Schema({
     userId:{
         type:Schema.Types.ObjectId,
         ref:'User',
-        require:true
+        required:true
     },
     address1:String,
     address2:String,

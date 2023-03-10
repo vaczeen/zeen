@@ -5,12 +5,11 @@ const Schema = mongoose.Schema
 const CartSchema = new Schema({
     product: {
         type: Schema.Types.ObjectId,
-        ref: 'Product',
-        require: true
+        ref: 'Product'
     },
     quantity: {
         type: Number,
-        require: true
+        required: true
     }
 }, {
     timestamps: true

@@ -5,12 +5,12 @@ const OrderItemSchema = new Schema({
     orderid:{
         type:Schema.Types.ObjectId,
         ref:'OrderDetail',
-        require:true
+        required:true
     },
     productId:{
         type:Schema.Types.ObjectId,
         ref:'Product',
-        require:true
+        required:true
     },
     quantity:Number
 },{

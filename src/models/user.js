@@ -6,7 +6,7 @@ const UserSchema = Schema({
     email: {
         type: String,
         lowercase: true,
-        require: [true, "email can't be blank"],
+        required: [true, "email can't be blank"],
         match: [/^\S+@\S+\.\S+$/, 'email is in invalid'],
         unique: true,
         index: true
@@ -17,14 +17,13 @@ const UserSchema = Schema({
     },
     password: {
         type: String,
-        require: true
+        required: true
     },
     firstName: String,
     lastName: String,
     roleId: {
         type: Schema.Types.ObjectId,
-        ref: 'Role',
-        require: true,
+        ref: 'Role'
     },
     phoneNumber: Number,
     isVerifyPhoneNo:{

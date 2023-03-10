@@ -4,11 +4,11 @@ const Schema = mongoose.Schema
 const CategorySchema = new Schema({
     pName:{
         type:String,
-        require:true
+        required:true
     },
     description:{
         type:String,
-        require:true
+        required:true
     }
 },{
     timestamps:true

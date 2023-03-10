@@ -5,27 +5,27 @@ const UserPayment = new Schema({
     userId:{
         type:Schema.Types.ObjectId,
         ref:'User',
-        require:true
+        required:true
     },
     paymentType:{
         type:String,
-        require:true
+        required:true
     },
     provider:{
         type:String,
-        require:true
+        required:true
     },
     cardNumber:{
         type:Number,
-        require:true
+        required:true
     },
     cardHolder:{
         type:String,
-        require:true
+        required:true
     },
     expire:{
         type:Date,
-        require:true
+        required:true
     }
 })
 
